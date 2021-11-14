@@ -7,7 +7,7 @@ OpMat:	STP 	X29, X30, [SP, -16]!
 
 LOOP:	LDRB 	W9, [X2] // OPS
 	CMP 	W9, 88 // X
-	B.EQ 	FIM
+	B.EQ 	END
 	CMP 	W9, 76 // L
 	B.EQ 	L
 	CMP 	W9, 67 // C
@@ -18,7 +18,7 @@ LOOP:	LDRB 	W9, [X2] // OPS
 	B.EQ	B
 	CMP 	W9, 79 // 0
 	B.EQ	O
-	B	FIM
+	B	END
 
 O:	ADD	W6, W6, 1 
 	ADD	X2, X2, 1 
@@ -101,7 +101,7 @@ AUXL:	CMP	W0, W14
 	ADD 	W14, W14, 1
 	B 	AUXL
 
-FIM:	CMP 	W6, 0 
+END:	CMP 	W6, 0 
 	B.NE	AUXEND
 	MOV	W0, -1
 	LDP	X29, X30, [SP], 16 
